@@ -75,37 +75,37 @@ class ContentManager {
                     features: [
                         {
                             id: 1,
-                            icon: "★",
+                            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 10v12"/><path d="M13.7 2H6.8L6 10h12l-.8-8z"/></svg>',
                             title: "Premium Cocktails",
                             description: "Klassische und moderne Cocktails, frisch zubereitet von erfahrenen Barkeepern"
                         },
                         {
                             id: 2,
-                            icon: "◆",
+                            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>',
                             title: "Kaffee-Spezialitäten",
                             description: "Erstklassiger Kaffee und Kaffeespezialitäten für jeden Geschmack"
                         },
                         {
                             id: 3,
-                            icon: "●",
+                            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c.6 5 4.2 8 9.5 8C17 20 21 16 21 10"/><path d="M12 2c0 6-4 9-4 9h8s-4-3-4-9"/><path d="m2 5 1 1"/><path d="m5 2 1 1"/></svg>',
                             title: "Cremiges Softeis",
                             description: "Leckeres Softeis in verschiedenen Sorten mit vielfältigen Toppings"
                         },
                         {
                             id: 4,
-                            icon: "✓",
+                            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect width="13" height="8" x="9" y="12" rx="2"/><path d="M23 17v2a2 2 0 0 1-2 2h-1"/><path d="M1 12h3"/><path d="M9 17h1"/></svg>',
                             title: "Mobil & Flexibel",
                             description: "Unser Anhänger kommt zu Ihrem Event - egal wo in der Region"
                         },
                         {
                             id: 5,
-                            icon: "■",
+                            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>',
                             title: "Alle Zahlungsarten",
                             description: "Bar, EC-Karte oder Kreditkarte - Sie haben die Wahl"
                         },
                         {
                             id: 6,
-                            icon: "♦",
+                            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
                             title: "Für jeden Anlass",
                             description: "Hochzeiten, Firmenfeiern, Geburtstage oder Stadtfeste"
                         }
