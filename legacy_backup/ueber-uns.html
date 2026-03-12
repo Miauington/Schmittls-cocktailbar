@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Über Schmittl's Cocktailbar - Patrick Schmitt aus Schriesheim">
+    <title>Über uns - Schmittl's Cocktailbar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-3xl);
+        }
+
+        .team-member {
+            display: flex;
+            gap: var(--spacing-2xl);
+            align-items: center;
+            background: rgba(31, 31, 58, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--color-accent-gold);
+        }
+
+        .team-info h3 {
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .team-role {
+            color: var(--color-accent-neon);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform var(--transition-base);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+            transform: translateY(100%);
+            transition: transform var(--transition-base);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .team-member {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Schmittl's</a>
+            <button class="navbar-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="angebot.html" class="navbar-link">Angebot</a></li>
+                <li><a href="events.html" class="navbar-link">Events</a></li>
+                <li><a href="ueber-uns.html" class="navbar-link active">Über uns</a></li>
+                <li><a href="kontakt.html" class="navbar-link">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section mt-nav">
+        <div class="container">
+            <div class="about-hero">
+                <h1 class="text-gold mb-lg">Über uns</h1>
+                <p class="text-muted text-lg" id="about-story">
+                    Schmittl's Cocktailbar wurde von Patrick Schmitt aus Schriesheim gegründet, um Events und Feste mit
+                    mobilen
+                    Genusserlebnissen zu bereichern. Unser stylischer Anhänger bringt professionelle Barkultur direkt zu
+                    Ihnen.
+                </p>
+            </div>
+
+            <div class="card glass mb-2xl">
+                <h2 class="text-gold mb-lg">Unsere Mission</h2>
+                <p class="text-muted text-lg" id="about-mission">
+                    Wir möchten Ihre Veranstaltung zu etwas Besonderem machen - mit erstklassigen Getränken,
+                    professionellem
+                    Service und einer einzigartigen Atmosphäre. Egal ob Hochzeit, Firmenevent oder private Feier - wir
+                    sorgen
+                    dafür, dass Ihre Gäste begeistert sind!
+                </p>
+            </div>
+
+            <h2 class="text-gold mb-xl">Über den Gründer</h2>
+            <div id="founder-container">
+                <!-- Founder profile will be rendered here -->
+            </div>
+
+            <h2 class="text-gold mb-xl mt-2xl">Kundenbewertungen</h2>
+            <div id="testimonials-container">
+                <!-- Testimonials will be rendered here -->
+            </div>
+
+            <h2 class="text-gold mb-xl mt-2xl">Was uns auszeichnet</h2>
+            <div class="grid grid-3 mb-2xl">
+                <div class="card glass">
+                    <div class="feature-icon">★</div>
+                    <h3 class="card-title text-center">Qualität</h3>
+                    <p class="card-description text-center">Nur die besten Zutaten und professionelle Zubereitung für
+                        perfekte Drinks.</p>
+                </div>
+
+                <div class="card glass">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="card-title text-center">Zuverlässigkeit</h3>
+                    <p class="card-description text-center">Pünktlich, professionell und immer gut vorbereitet - wie
+                        bei der Feuerwehr.</p>
+                </div>
+
+                <div class="card glass">
+                    <div class="feature-icon">◆</div>
+                    <h3 class="card-title text-center">Leidenschaft</h3>
+                    <p class="card-description text-center">Mit Herzblut und Begeisterung für perfekte Genusserlebnisse.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="text-gold mb-xl">Impressionen</h2>
+            <div class="gallery-grid" id="gallery-container">
+                <!-- Gallery will be rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-dark">
+        <div class="container text-center">
+            <h2 class="text-gold mb-lg">Überzeugt?</h2>
+            <p class="text-muted mb-xl text-lg">
+                Lassen Sie uns gemeinsam Ihr Event zu einem unvergesslichen Erlebnis machen!
+            </p>
+            <a href="kontakt.html" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Schmittl's Cocktailbar</h4>
+                    <p>Mobile Cocktailbar im Anhänger<br>Patrick Schmitt<br>Schriesheim</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="angebot.html">Angebot</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="#" onclick="cookieConsent.revoke(); return false;">Cookie-Einstellungen</a></li>
+                        <li><a href="admin/login.html" class="admin-link">🔐 Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <p>
+                        <a href="tel:+491234567890">+49 123 456789</a><br>
+                        <a href="mailto:info@schmittls-cocktailbar.de">info@schmittls-cocktailbar.de</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Schmittl's Cocktailbar - Patrick Schmitt. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/content-manager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/inline-editor.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Render about content
+            renderContent('about-story', 'pages.about.story');
+            renderContent('about-mission', 'pages.about.mission');
+
+            // Render founder profile
+            const founder = contentManager.get('pages.about.founder');
+            if (founder) {
+                const container = document.getElementById('founder-container');
+                container.innerHTML = `
+          <div class="founder-profile">
+            <img src="${founder.image}" alt="${founder.name}" class="founder-photo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22250%22%3E%3Ccircle cx=%22125%22 cy=%22125%22 r=%22125%22 fill=%22%231a1a2e%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2280%22 fill=%22%23d4af37%22%3E${founder.name.charAt(0)}%3C/text%3E%3C/svg%3E'">
+            <div class="founder-info">
+              <h3>${founder.name}</h3>
+              <div class="founder-role">${founder.role}</div>
+              <div class="founder-location">📍 ${founder.location}</div>
+              <p class="founder-bio text-muted">${founder.bio}</p>
+              ${founder.expertise && founder.expertise.length > 0 ? `
+                <div class="founder-expertise">
+                  ${founder.expertise.map(skill => `<div class="expertise-item">${skill}</div>`).join('')}
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+            }
+
+            // Render testimonials
+            const testimonials = contentManager.get('pages.about.testimonials');
+            if (testimonials && testimonials.length > 0) {
+                const container = document.getElementById('testimonials-container');
+                container.innerHTML = `
+          <div class="testimonials-grid">
+            ${testimonials.map(testimonial => `
+              <div class="testimonial-card">
+                <div class="testimonial-rating">${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}</div>
+                <p class="testimonial-text">"${testimonial.text}"</p>
+                <div class="testimonial-author">
+                  <div>
+                    <div class="testimonial-name">${testimonial.name}</div>
+                    <div class="testimonial-event">${testimonial.event}</div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+            }
+
+            // Render gallery
+            const gallery = contentManager.get('pages.about.gallery');
+            if (gallery && gallery.length > 0) {
+                const container = document.getElementById('gallery-container');
+                container.innerHTML = gallery.map(item => `
+          <div class="gallery-item">
+            <img src="${item.image}" alt="${item.caption}" class="gallery-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect width=%22400%22 height=%22300%22 fill=%22%231a1a2e%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22%23d4af37%22%3E${item.caption}%3C/text%3E%3C/svg%3E'">
+            <div class="gallery-caption">${item.caption}</div>
+          </div>
+        `).join('');
+            } else {
+                document.getElementById('gallery-container').innerHTML = `
+          <div class="card glass" style="grid-column: 1 / -1;">
+            <p class="text-center text-muted">Galerie wird bald mit Bildern gefüllt!</p>
+          </div>
+        `;
+            }
+        });
+    </script>
+</body>
+
+</html>

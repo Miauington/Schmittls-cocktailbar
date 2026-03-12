@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Schmittl's Cocktailbar</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .admin-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            background: var(--color-dark);
+            padding: var(--spacing-xl);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .admin-logo {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-2xl);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-2xl);
+            text-align: center;
+        }
+
+        .admin-menu {
+            list-style: none;
+        }
+
+        .admin-menu-item {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .admin-menu-link {
+            display: block;
+            padding: var(--spacing-md);
+            color: var(--color-text-muted);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .admin-menu-link:hover,
+        .admin-menu-link.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--color-accent-gold);
+        }
+
+        .admin-content {
+            padding: var(--spacing-2xl);
+            background: var(--color-primary);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .stat-card {
+            background: rgba(31, 31, 58, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            transition: all var(--transition-base);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-accent-gold);
+        }
+
+        .stat-icon {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .stat-value {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-sidebar {
+                border-right: none;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">Schmittl's</div>
+
+            <ul class="admin-menu">
+                <li class="admin-menu-item">
+                    <a href="dashboard.html" class="admin-menu-link active">📊 Dashboard</a>
+                </li>
+                <li class="admin-menu-item">
+                    <a href="../index.html" class="admin-menu-link">📝 Seiten bearbeiten</a>
+                </li>
+                <li class="admin-menu-item">
+                    <a href="products.html" class="admin-menu-link">🍸 Produkte</a>
+                </li>
+                <li class="admin-menu-item">
+                    <a href="events.html" class="admin-menu-link">📅 Events</a>
+                </li>
+                <li class="admin-menu-item">
+                    <a href="gallery.html" class="admin-menu-link">🖼️ Galerie</a>
+                </li>
+                <li class="admin-menu-item">
+                    <a href="inquiries.html" class="admin-menu-link">📬 Anfragen</a>
+                </li>
+                <li class="admin-menu-item">
+                    <a href="settings.html" class="admin-menu-link">⚙️ Einstellungen</a>
+                </li>
+                <li class="admin-menu-item">
+                    <a href="#" onclick="logout()" class="admin-menu-link">🚪 Abmelden</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="admin-header">
+                <div>
+                    <h1 class="text-gold">Dashboard</h1>
+                    <p class="text-muted">Willkommen zurück! Hier ist eine Übersicht Ihrer Website.</p>
+                </div>
+                <div>
+                    <span class="text-muted" id="current-user"></span>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🍸</div>
+                    <div class="stat-value" id="cocktails-count">0</div>
+                    <div class="stat-label">Cocktails im Angebot</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">☕</div>
+                    <div class="stat-value" id="coffee-count">0</div>
+                    <div class="stat-label">Kaffee-Spezialitäten</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🍦</div>
+                    <div class="stat-value" id="icecream-count">0</div>
+                    <div class="stat-label">Softeis-Variationen</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-value" id="events-count">0</div>
+                    <div class="stat-label">Kommende Events</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📬</div>
+                    <div class="stat-value" id="inquiries-count">0</div>
+                    <div class="stat-label">Neue Anfragen</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🖼️</div>
+                    <div class="stat-value" id="gallery-count">0</div>
+                    <div class="stat-label">Galerie-Bilder</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <h2 class="text-gold mb-lg">Schnellzugriff</h2>
+            <div class="quick-actions">
+                <a href="../index.html" class="btn btn-primary">Startseite bearbeiten</a>
+                <a href="products.html" class="btn btn-secondary">Produkt hinzufügen</a>
+                <a href="events.html" class="btn btn-secondary">Event hinzufügen</a>
+                <a href="settings.html" class="btn btn-secondary">Einstellungen</a>
+            </div>
+
+            <!-- Recent Activity -->
+            <div style="margin-top: var(--spacing-2xl);">
+                <h2 class="text-gold mb-lg">Letzte Aktivitäten</h2>
+                <div class="card glass">
+                    <p class="text-muted">Hier werden zukünftig Ihre letzten Änderungen angezeigt.</p>
+                </div>
+            </div>
+
+            <!-- Data Management -->
+            <div style="margin-top: var(--spacing-2xl);">
+                <h2 class="text-gold mb-lg">Datenverwaltung</h2>
+                <div class="card glass">
+                    <p class="text-muted mb-lg">Sichern Sie Ihre Daten oder stellen Sie sie wieder her.</p>
+                    <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                        <button onclick="exportData()" class="btn btn-secondary">📥 Daten exportieren</button>
+                        <button onclick="document.getElementById('import-file').click()" class="btn btn-secondary">📤
+                            Daten importieren</button>
+                        <input type="file" id="import-file" accept=".json" style="display: none;"
+                            onchange="importData(event)">
+                        <button onclick="resetData()" class="btn btn-secondary"
+                            style="background: rgba(239, 71, 111, 0.2); border-color: var(--color-error);">🔄 Auf
+                            Standard zurücksetzen</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/content-manager.js"></script>
+    <script src="../js/auth.js"></script>
+
+    <script>
+        // Require authentication
+        authManager.requireAuth();
+
+        // Display current user
+        const session = authManager.getSession();
+        if (session) {
+            document.getElementById('current-user').textContent = `Angemeldet als: ${session.username}`;
+        }
+
+        // Load statistics
+        function loadStats() {
+            const cocktails = contentManager.get('products.cocktails') || [];
+            const coffee = contentManager.get('products.coffee') || [];
+            const icecream = contentManager.get('products.icecream') || [];
+            const events = contentManager.get('events') || [];
+            const gallery = contentManager.get('pages.about.gallery') || [];
+            const inquiries = JSON.parse(localStorage.getItem('schmittls_inquiries') || '[]');
+
+            document.getElementById('cocktails-count').textContent = cocktails.length;
+            document.getElementById('coffee-count').textContent = coffee.length;
+            document.getElementById('icecream-count').textContent = icecream.length;
+            document.getElementById('events-count').textContent = events.length;
+            document.getElementById('inquiries-count').textContent = inquiries.length;
+            document.getElementById('gallery-count').textContent = gallery.length;
+        }
+
+        function logout() {
+            if (confirm('Möchten Sie sich wirklich abmelden?')) {
+                authManager.logout();
+            }
+        }
+
+        function exportData() {
+            contentManager.exportContent();
+            showNotification('Daten erfolgreich exportiert!', 'success');
+        }
+
+        async function importData(event) {
+            const file = event.target.files[0];
+            if (file) {
+                try {
+                    await contentManager.importContent(file);
+                    showNotification('Daten erfolgreich importiert!', 'success');
+                    loadStats();
+                } catch (error) {
+                    showNotification('Fehler beim Importieren der Daten!', 'error');
+                }
+            }
+        }
+
+        function resetData() {
+            if (contentManager.reset()) {
+                showNotification('Daten auf Standard zurückgesetzt!', 'success');
+                loadStats();
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: var(--spacing-lg);
+        background: rgba(31, 31, 58, 0.95);
+        border-radius: var(--radius-lg);
+        color: var(--color-text);
+        box-shadow: var(--shadow-xl);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease-out;
+      `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        // Load stats on page load
+        loadStats();
+    </script>
+</body>
+
+</html>

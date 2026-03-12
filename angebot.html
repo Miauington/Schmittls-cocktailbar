@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Unser Angebot: Premium Cocktails, Kaffee-Spezialitäten und cremiges Softeis von Schmittl's Cocktailbar">
+    <title>Unser Angebot - Schmittl's Cocktailbar</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <style>
+        .tabs {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-button {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: transparent;
+            border: none;
+            color: var(--color-text-muted);
+            font-family: var(--font-heading);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width var(--transition-base);
+        }
+
+        .tab-button:hover {
+            color: var(--color-accent-gold);
+        }
+
+        .tab-button.active {
+            color: var(--color-accent-gold);
+        }
+
+        .tab-button.active::after {
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .product-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: var(--spacing-lg);
+            background: rgba(31, 31, 58, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-base);
+        }
+
+        .product-card:hover {
+            transform: translateX(5px);
+            border-color: var(--color-accent-gold);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .product-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+        }
+
+        .product-info h3 {
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .product-category {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .product-price {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-accent-neon);
+            margin-top: var(--spacing-md);
+        }
+
+        .products-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                width: 100%;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Schmittl's</a>
+            <button class="navbar-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="angebot.html" class="navbar-link active">Angebot</a></li>
+                <li><a href="events.html" class="navbar-link">Events</a></li>
+                <li><a href="ueber-uns.html" class="navbar-link">Über uns</a></li>
+                <li><a href="kontakt.html" class="navbar-link">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section mt-nav">
+        <div class="container">
+            <h1 class="text-center text-gold mb-lg">Unser Angebot</h1>
+            <p class="text-center text-muted mb-2xl text-lg text-limit-width">
+                Von erfrischenden Cocktails über aromatischen Kaffee bis hin zu cremigem Softeis - entdecken Sie unser
+                vielfältiges Angebot!
+            </p>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('cocktails')">✦ Cocktails</button>
+                <button class="tab-button" onclick="switchTab('kaffee')">◉ Kaffee</button>
+                <button class="tab-button" onclick="switchTab('softeis')">● Softeis</button>
+            </div>
+
+            <!-- Cocktails Tab -->
+            <div id="cocktails" class="tab-content active">
+                <h2 class="text-gold mb-xl">Premium Cocktails</h2>
+                <div class="products-grid" id="cocktails-grid"></div>
+            </div>
+
+            <!-- Kaffee Tab -->
+            <div id="kaffee" class="tab-content">
+                <h2 class="text-gold mb-xl">Kaffee-Spezialitäten</h2>
+                <div class="products-grid" id="kaffee-grid"></div>
+            </div>
+
+            <!-- Softeis Tab -->
+            <div id="softeis" class="tab-content">
+                <h2 class="text-gold mb-xl">Cremiges Softeis</h2>
+                <div class="products-grid" id="softeis-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-dark">
+        <div class="container text-center">
+            <h2 class="text-gold mb-lg">Interesse geweckt?</h2>
+            <p class="text-muted mb-xl">Buchen Sie Schmittl's Cocktailbar für Ihr nächstes Event!</p>
+            <a href="kontakt.html" class="btn btn-primary">Jetzt anfragen</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Schmittl's Cocktailbar</h4>
+                    <p>Mobile Cocktailbar im Anhänger<br>Patrick Schmitt<br>Schriesheim</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="angebot.html">Angebot</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="#" onclick="cookieConsent.revoke(); return false;">Cookie-Einstellungen</a></li>
+                        <li><a href="admin/login.html" class="admin-link">✦ Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Kontakt</h4>
+                <p>
+                    <a href="tel:+491234567890">+49 123 456789</a><br>
+                    <a href="mailto:info@schmittls-cocktailbar.de">info@schmittls-cocktailbar.de</a>
+                </p>
+            </div>
+        </div> <!-- End footer-content -->
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Schmittl's Cocktailbar - Patrick Schmitt. Alle Rechte vorbehalten.</p>
+        </div>
+        </div> <!-- End container -->
+    </footer>
+
+    <script type="module" src="/src/js/content-manager.js"></script>
+    <script type="module" src="/src/js/auth.js"></script>
+    <script type="module" src="/src/js/cookie-consent.js"></script>
+    <script type="module" src="/src/js/main.js"></script>
+
+    <script type="module">
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Set active button
+            event.target.classList.add('active');
+
+            // Update URL hash
+            window.location.hash = tabName;
+        }
+
+        // Make switchTab available globally
+        window.switchTab = switchTab;
+
+        // Render products
+        window.addEventListener('DOMContentLoaded', function () {
+            const checkContentManager = setInterval(() => {
+                if (window.contentManager) {
+                    clearInterval(checkContentManager);
+
+                    const formatPrice = (price) => price + ' €';
+
+                    // Render cocktails
+                    const cocktails = contentManager.get('products.cocktails');
+                    if (cocktails) {
+                        const grid = document.getElementById('cocktails-grid');
+                        grid.innerHTML = cocktails.map(product => `
+              <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <div class="product-info">
+                  <span class="product-category">${product.category}</span>
+                  <h3>${product.name}</h3>
+                  <p class="text-muted">${product.description}</p>
+                  <div class="product-price">${formatPrice(product.price)}</div>
+                </div>
+              </div>
+            `).join('');
+                    }
+
+                    // Render coffee
+                    const coffee = contentManager.get('products.coffee');
+                    if (coffee) {
+                        const grid = document.getElementById('kaffee-grid');
+                        grid.innerHTML = coffee.map(product => `
+              <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <div class="product-info">
+                  <h3>${product.name}</h3>
+                  <p class="text-muted">${product.description}</p>
+                  <div class="product-price">${formatPrice(product.price)}</div>
+                </div>
+              </div>
+            `).join('');
+                    }
+
+                    // Render ice cream
+                    const icecream = contentManager.get('products.icecream');
+                    if (icecream) {
+                        const grid = document.getElementById('softeis-grid');
+                        grid.innerHTML = icecream.map(product => `
+              <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <div class="product-info">
+                  <h3>${product.name}</h3>
+                  <p class="text-muted">${product.description}</p>
+                  <div class="product-price">${formatPrice(product.price)}</div>
+                </div>
+              </div>
+            `).join('');
+                    }
+
+                    // Check URL hash and switch to that tab
+                    if (window.location.hash) {
+                        const tabName = window.location.hash.substring(1);
+                        const tabButton = Array.from(document.querySelectorAll('.tab-button')).find(btn =>
+                            btn.textContent.toLowerCase().includes(tabName.toLowerCase())
+                        );
+                        if (tabButton) {
+                            tabButton.click();
+                        }
+                    }
+                }
+            }, 50);
+        });
+    </script>
+</body>
+
+</html>

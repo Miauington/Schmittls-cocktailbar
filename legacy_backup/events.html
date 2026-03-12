@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Events und Veranstaltungen mit Schmittl's Cocktailbar - Buchen Sie uns für Ihr Event!">
+    <title>Events - Schmittl's Cocktailbar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .event-card {
+            background: rgba(31, 31, 58, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent-gold);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: var(--spacing-xl);
+        }
+
+        .event-date {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: var(--gradient-gold);
+            color: var(--color-text-dark);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .event-title {
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .event-type-badge {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: rgba(0, 245, 255, 0.2);
+            border: 1px solid var(--color-accent-neon);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-xs);
+            color: var(--color-accent-neon);
+            text-transform: uppercase;
+            margin-top: var(--spacing-md);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Schmittl's</a>
+            <button class="navbar-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="angebot.html" class="navbar-link">Angebot</a></li>
+                <li><a href="events.html" class="navbar-link active">Events</a></li>
+                <li><a href="ueber-uns.html" class="navbar-link">Über uns</a></li>
+                <li><a href="kontakt.html" class="navbar-link">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section" style="margin-top: 70px;">
+        <div class="container">
+            <h1 class="text-center text-gold mb-lg">Events & Veranstaltungen</h1>
+            <p class="text-center text-muted mb-2xl"
+                style="font-size: var(--font-size-lg); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Erleben Sie Schmittl's Cocktailbar bei verschiedenen Events oder buchen Sie uns für Ihre eigene
+                Veranstaltung!
+            </p>
+
+            <h2 class="text-gold mb-xl">Kommende Events</h2>
+            <div class="grid grid-2" id="events-grid">
+                <!-- Events will be rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-dark">
+        <div class="container">
+            <h2 class="text-center text-gold mb-xl">Für welche Events sind wir perfekt?</h2>
+
+            <div class="grid grid-3">
+                <div class="card glass">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: var(--spacing-md);">💍</div>
+                    <h3 class="card-title text-center">Hochzeiten</h3>
+                    <p class="card-description text-center">Machen Sie Ihre Hochzeit unvergesslich mit erstklassigen
+                        Cocktails und professionellem Service.</p>
+                </div>
+
+                <div class="card glass">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: var(--spacing-md);">🎂</div>
+                    <h3 class="card-title text-center">Geburtstage</h3>
+                    <p class="card-description text-center">Feiern Sie Ihren besonderen Tag mit unserer mobilen
+                        Cocktailbar und begeistern Sie Ihre Gäste.</p>
+                </div>
+
+                <div class="card glass">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: var(--spacing-md);">🏢</div>
+                    <h3 class="card-title text-center">Firmenevents</h3>
+                    <p class="card-description text-center">Professionelle Bewirtung für Firmenfeiern, Jubiläen und
+                        Team-Events.</p>
+                </div>
+
+                <div class="card glass">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: var(--spacing-md);">🎪</div>
+                    <h3 class="card-title text-center">Stadtfeste</h3>
+                    <p class="card-description text-center">Wir sind regelmäßig auf Stadtfesten und öffentlichen
+                        Veranstaltungen vertreten.</p>
+                </div>
+
+                <div class="card glass">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: var(--spacing-md);">🎉</div>
+                    <h3 class="card-title text-center">Private Feiern</h3>
+                    <p class="card-description text-center">Gartenpartys, Jubiläen oder einfach nur zum Feiern - wir
+                        kommen zu Ihnen!</p>
+                </div>
+
+                <div class="card glass">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: var(--spacing-md);">🎭</div>
+                    <h3 class="card-title text-center">Kulturevents</h3>
+                    <p class="card-description text-center">Konzerte, Ausstellungen und kulturelle Veranstaltungen
+                        werden mit uns zum Genuss.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container text-center">
+            <h2 class="text-gold mb-lg">Buchen Sie uns für Ihr Event!</h2>
+            <p class="text-muted mb-xl"
+                style="font-size: var(--font-size-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
+                Egal ob Hochzeit, Geburtstag oder Firmenevent - wir machen Ihre Veranstaltung zu etwas Besonderem!
+            </p>
+            <a href="kontakt.html" class="btn btn-primary">Jetzt anfragen</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Schmittl's Cocktailbar</h4>
+                    <p>Mobile Cocktailbar im Anhänger<br>Patrick Schmitt<br>Schriesheim</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="angebot.html">Angebot</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="#" onclick="cookieConsent.revoke(); return false;">Cookie-Einstellungen</a></li>
+                        <li><a href="admin/login.html" style="color: var(--color-accent-neon);">🔐 Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <p>
+                        <a href="tel:+491234567890">+49 123 456789</a><br>
+                        <a href="mailto:info@schmittls-cocktailbar.de">info@schmittls-cocktailbar.de</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Schmittl's Cocktailbar - Patrick Schmitt. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/content-manager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/inline-editor.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const events = contentManager.get('events');
+            if (events && events.length > 0) {
+                const grid = document.getElementById('events-grid');
+                grid.innerHTML = events.map(event => `
+          <div class="event-card">
+            <img src="${event.image}" alt="${event.title}" class="event-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22%3E%3Crect width=%22400%22 height=%22250%22 fill=%22%231a1a2e%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23d4af37%22%3E${event.title}%3C/text%3E%3C/svg%3E'">
+            <div class="event-content">
+              <div class="event-date">📅 ${formatDate(event.date)}</div>
+              <h3 class="event-title">${event.title}</h3>
+              <div class="event-location">
+                <span>📍</span>
+                <span>${event.location}</span>
+              </div>
+              <p class="text-muted">${event.description}</p>
+              <span class="event-type-badge">${event.type === 'public' ? 'Öffentlich' : 'Privat'}</span>
+            </div>
+          </div>
+        `).join('');
+            } else {
+                document.getElementById('events-grid').innerHTML = `
+          <div class="card glass" style="grid-column: 1 / -1;">
+            <p class="text-center text-muted">Aktuell sind keine Events geplant. Schauen Sie bald wieder vorbei oder <a href="kontakt.html" class="text-gold">buchen Sie uns</a> für Ihr eigenes Event!</p>
+          </div>
+        `;
+            }
+        });
+    </script>
+</body>
+
+</html>

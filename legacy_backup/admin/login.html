@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Schmittl's Cocktailbar</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl);
+            background: var(--gradient-primary);
+        }
+
+        .login-box {
+            max-width: 450px;
+            width: 100%;
+            background: rgba(31, 31, 58, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .login-logo h1 {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-3xl);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .login-logo p {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: var(--font-size-base);
+            transition: all var(--transition-base);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .error-message {
+            background: rgba(239, 71, 111, 0.1);
+            border: 1px solid var(--color-error);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            color: var(--color-error);
+            margin-bottom: var(--spacing-lg);
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            75% {
+                transform: translateX(10px);
+            }
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        .back-link a {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+            transition: color var(--transition-fast);
+        }
+
+        .back-link a:hover {
+            color: var(--color-accent-gold);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-logo">
+                <h1>Schmittl's</h1>
+                <p>Admin-Bereich</p>
+            </div>
+
+            <div id="error-message" class="error-message"></div>
+
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label" for="username">Benutzername</label>
+                    <input type="text" id="username" class="form-input" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Passwort</label>
+                    <input type="password" id="password" class="form-input" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Anmelden</button>
+            </form>
+
+            <div class="back-link">
+                <a href="../index.html">← Zurück zur Website</a>
+            </div>
+
+            <div
+                style="margin-top: var(--spacing-xl); padding: var(--spacing-md); background: rgba(0, 245, 255, 0.1); border-radius: var(--radius-md); border: 1px solid rgba(0, 245, 255, 0.2);">
+                <p style="font-size: var(--font-size-sm); color: var(--color-accent-neon); margin: 0;">
+                    <strong>Standard-Zugangsdaten:</strong><br>
+                    Benutzername: <code
+                        style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px;">admin</code><br>
+                    Passwort: <code
+                        style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px;">schmittls2026</code>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/content-manager.js"></script>
+    <script src="../js/auth.js"></script>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            const result = authManager.login(username, password);
+
+            if (result.success) {
+                window.location.href = 'dashboard.html';
+            } else {
+                errorMessage.textContent = result.message;
+                errorMessage.classList.add('show');
+
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Auto-focus username field
+        document.getElementById('username').focus();
+    </script>
+</body>
+
+</html>

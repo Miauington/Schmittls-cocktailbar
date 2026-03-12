@@ -1,0 +1,17 @@
+{
+  "name": "schmittls-cocktailbar",
+  "version": "1.0.0",
+  "description": "Schmittl's Cocktailbar - Mobile Cocktailbar im Anhänger mit Cocktails, Kaffee & Softeis",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["cocktailbar", "mobile-bar", "events", "schriesheim"],
+  "author": "Patrick Schmitt",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}

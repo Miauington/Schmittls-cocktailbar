@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontaktieren Sie Schmittl's Cocktailbar für Ihre Event-Anfrage">
+    <title>Kontakt - Schmittl's Cocktailbar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: var(--font-size-base);
+            transition: all var(--transition-base);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info-card {
+            background: rgba(31, 31, 58, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-info-card h3 {
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-muted);
+        }
+
+        .contact-info-item span:first-child {
+            font-size: var(--font-size-2xl);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Schmittl's</a>
+            <button class="navbar-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="angebot.html" class="navbar-link">Angebot</a></li>
+                <li><a href="events.html" class="navbar-link">Events</a></li>
+                <li><a href="ueber-uns.html" class="navbar-link">Über uns</a></li>
+                <li><a href="kontakt.html" class="navbar-link active">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section" style="margin-top: 70px;">
+        <div class="container">
+            <h1 class="text-center text-gold mb-lg">Kontakt</h1>
+            <p class="text-center text-muted mb-2xl"
+                style="font-size: var(--font-size-lg); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Haben Sie Fragen oder möchten Sie Schmittl's Cocktailbar für Ihr Event buchen? Kontaktieren Sie uns!
+            </p>
+
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-gold mb-xl">Anfrage senden</h2>
+                    <form id="contact-form" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Name *</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">E-Mail *</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Telefon</label>
+                            <input type="tel" id="phone" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="event-date">Event-Datum</label>
+                            <input type="date" id="event-date" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="event-type">Event-Art</label>
+                            <select id="event-type" class="form-select">
+                                <option value="">Bitte wählen...</option>
+                                <option value="hochzeit">Hochzeit</option>
+                                <option value="geburtstag">Geburtstag</option>
+                                <option value="firmenevent">Firmenevent</option>
+                                <option value="stadtfest">Stadtfest</option>
+                                <option value="sonstiges">Sonstiges</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="offer">Gewünschtes Angebot</label>
+                            <select id="offer" class="form-select">
+                                <option value="alles">Alles (Cocktails, Kaffee & Softeis)</option>
+                                <option value="cocktails">Nur Cocktails</option>
+                                <option value="kaffee">Nur Kaffee</option>
+                                <option value="softeis">Nur Softeis</option>
+                                <option value="cocktails-kaffee">Cocktails & Kaffee</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="guests">Anzahl Gäste</label>
+                            <input type="number" id="guests" class="form-input" min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Ihre Nachricht *</label>
+                            <textarea id="message" class="form-textarea" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Anfrage senden</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-gold mb-xl">Kontaktinformationen</h2>
+
+                    <div class="contact-info-card">
+                        <h3>📍 Standort</h3>
+                        <p class="text-muted">Schriesheim<br>Baden-Württemberg, Deutschland</p>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3>📞 Telefon</h3>
+                        <div class="contact-info-item">
+                            <span>📱</span>
+                            <a href="tel:+491234567890">+49 123 456789</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3>✉️ E-Mail</h3>
+                        <div class="contact-info-item">
+                            <span>📧</span>
+                            <a href="mailto:info@schmittls-cocktailbar.de">info@schmittls-cocktailbar.de</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3>💳 Zahlungsarten</h3>
+                        <p class="text-muted">Wir akzeptieren:</p>
+                        <div
+                            style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-md); flex-wrap: wrap;">
+                            <span
+                                style="padding: var(--spacing-sm) var(--spacing-md); background: rgba(212, 175, 55, 0.1); border-radius: var(--radius-md);">💵
+                                Bar</span>
+                            <span
+                                style="padding: var(--spacing-sm) var(--spacing-md); background: rgba(212, 175, 55, 0.1); border-radius: var(--radius-md);">💳
+                                EC-Karte</span>
+                            <span
+                                style="padding: var(--spacing-sm) var(--spacing-md); background: rgba(212, 175, 55, 0.1); border-radius: var(--radius-md);">💳
+                                Kreditkarte</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3>🌐 Social Media</h3>
+                        <div class="social-links" style="justify-content: flex-start;">
+                            <a href="#" class="social-link">📘</a>
+                            <a href="#" class="social-link">📷</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Schmittl's Cocktailbar</h4>
+                    <p>Mobile Cocktailbar im Anhänger<br>Patrick Schmitt<br>Schriesheim</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="angebot.html">Angebot</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="#" onclick="cookieConsent.revoke(); return false;">Cookie-Einstellungen</a></li>
+                        <li><a href="admin/login.html" style="color: var(--color-accent-neon);">🔐 Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <p>
+                        <a href="tel:+491234567890">+49 123 456789</a><br>
+                        <a href="mailto:info@schmittls-cocktailbar.de">info@schmittls-cocktailbar.de</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Schmittl's Cocktailbar - Patrick Schmitt. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/content-manager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                eventDate: document.getElementById('event-date').value,
+                eventType: document.getElementById('event-type').value,
+                offer: document.getElementById('offer').value,
+                guests: document.getElementById('guests').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Store in localStorage (in real app, this would be sent to server)
+            const inquiries = JSON.parse(localStorage.getItem('schmittls_inquiries') || '[]');
+            inquiries.push(formData);
+            localStorage.setItem('schmittls_inquiries', JSON.stringify(inquiries));
+
+            // Show success message
+            showNotification('Vielen Dank für Ihre Anfrage! Wir melden uns schnellstmöglich bei Ihnen.', 'success');
+
+            // Reset form
+            document.getElementById('contact-form').reset();
+
+            // In a real application, you would send this to a server:
+            // fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
+        }
+    </script>
+</body>
+
+</html>
