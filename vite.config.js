@@ -14,7 +14,7 @@ export default defineConfig({
                 impressum: resolve(__dirname, 'impressum.html'),
                 datenschutz: resolve(__dirname, 'datenschutz.html'),
                 'admin-login': resolve(__dirname, 'admin/login.html'),
-                'admin-dashboard': resolve(__dirname, 'admin/dashboard.html'),
+                'admin-dashboard': resolve(__dirname, 'dashboard.html'),
             },
         },
     },
