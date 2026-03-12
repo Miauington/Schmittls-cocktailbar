@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - Schmittl's Cocktailbar</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/src/css/style.css">
     <style>
         .login-container {
             min-height: 100vh;
@@ -20,7 +20,8 @@
             max-width: 450px;
             width: 100%;
             background: rgba(31, 31, 58, 0.8);
-            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: var(--radius-xl);
             padding: var(--spacing-2xl);
@@ -149,7 +150,7 @@
             </form>
 
             <div class="back-link">
-                <a href="../index.html">← Zurück zur Website</a>
+                <a href="index.html">← Zurück zur Website</a>
             </div>
 
             <div
@@ -165,8 +166,8 @@
         </div>
     </div>
 
-    <script src="../js/content-manager.js"></script>
-    <script src="../js/auth.js"></script>
+    <script type="module" src="/src/js/content-manager.js"></script>
+    <script type="module" src="/src/js/auth.js"></script>
 
     <script>
         function handleLogin(event) {
